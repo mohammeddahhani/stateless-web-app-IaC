@@ -72,10 +72,14 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
      ```
    - Open the DNS name in a browser to access the web app securely over HTTPS.
 
- - Access the jumpstation via SSH using the private key:
+   - Access the jumpstation via SSH using the local SSH private key:
      ```sh
-     terraform output alb_dns_name
+     ssh -i my-private-key ec2-user@<jumpstation address>
      ```
+   - Transfer the private key to the jump station to be able to SSH into the EC2 web instances:
+     ```sh
+     scp -i my-private-key my-private-key ec2-user@<jumpstation address>:/root/.ssh
+     ```     
 
 ## Cleanup
 To destroy all deployed resources:

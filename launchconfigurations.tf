@@ -91,7 +91,7 @@ resource "aws_instance" "jumpstation" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("${var.key_path}")  
+    private_key = file(var.key_path)  
     host        = self.public_ip
   }
 

@@ -44,31 +44,12 @@ resource "aws_alb_listener" "ec2-alb-http-listener" {
   }
 }
 
-# HTTPS Target Group
-resource "aws_alb_target_group" "https-target-group" {
-  name     = "https-target-group"
-  port     = 443
-  protocol = "HTTPS"
-  vpc_id   = aws_vpc.main-vpc.id
-
-
-  health_check {
-    path                = var.health_check_path
-    port                = "traffic-port"
-    healthy_threshold   = 5
-    unhealthy_threshold = 2
-    timeout             = 2
-    interval            = 60
-    matcher             = "200"
-  }
-}
-
 # HTTPS Listener
 resource "aws_alb_listener" "ec2-alb-https-listener" {
   load_balancer_arn = aws_lb.main-alb.id
   port              = "443"
   protocol          = "HTTPS"
-  depends_on        = [aws_alb_target_group.https-target-group]
+  depends_on        = [aws_alb_target_group.http-target-group]
 
   ssl_policy = "ELBSecurityPolicy-2016-08"
   certificate_arn   = aws_acm_certificate.ssl_cert.arn
@@ -76,12 +57,12 @@ resource "aws_alb_listener" "ec2-alb-https-listener" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_alb_target_group.https-target-group.arn 
+    target_group_arn = aws_alb_target_group.http-target-group.arn 
    }
 }
 
 # link the EC2 clister to the target group of the loadbalancer
 resource "aws_autoscaling_attachment" "asg_attachment_bar" {
   autoscaling_group_name = aws_autoscaling_group.ec2-cluster.id
-  lb_target_group_arn    = aws_alb_target_group.https-target-group.arn
+  lb_target_group_arn    = aws_alb_target_group.http-target-group.arn
 }
