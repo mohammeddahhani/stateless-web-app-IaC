@@ -3,7 +3,11 @@
 id_rsa
 id_rsa.pub
 .env
+<<<<<<< HEAD
 terraform.tfstate*
 .terraform*
 
 .aws/credentials
+=======
+
+>>>>>>> cbf25c843c2c067138540ce73bcd38458eaced5c
