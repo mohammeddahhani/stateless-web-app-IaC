@@ -62,12 +62,12 @@ Below the list of requirements and the measures taken to meet them:
 
    ```
 
-3 **Initialize Terraform**:
+3. **Initialize Terraform**:
    ```sh
    terraform init
    ```
 
-4 **Update terraform.vartf with the *public_key_path* and eventually
+4. **Update terraform.vartf with the *public_key_path* and eventually
    ```sh
    terraform init
    ```
