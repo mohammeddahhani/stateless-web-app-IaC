@@ -4,12 +4,16 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
 ## Requirements
 - **Terraform**: Ensure Terraform 1.11.3 is installed and configured.
 - **Service Account Credentials**:
-  - Create an **IAM User** with programmatic access.
+  - Create an IAM User with programmatic access.
   - Generate and securely store **AWS Access Key ID** and **Secret Access Key**.
   - set credentials under **./.aws/credentials**.
-- **Service Account Permissions**:
-  - In total, the following permissions are needed: **AmazonEC2FullAccess**, **AWSCertificateManagerFullAccess** and **IAMFullAccess**
+- **Service Account Permissions**
 
+The following AWS permissions are required for proper deployment:
+
+- **AmazonEC2FullAccess** – Full control over EC2 instances, security groups, and networking.
+- **AWSCertificateManagerFullAccess** – Required for managing SSL/TLS certificates in AWS ACM.
+- **IAMFull
 ## Deployment Overview
 
 ![Architecture](images/architecture.png)
@@ -82,8 +86,8 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
      ```     
 
 ## Cleanup
-To destroy all deployed resources:
-```sh
+To destroy all deployed resources
+:```sh
 terraform destroy -auto-approve
 ```
 
