@@ -1,8 +1,8 @@
-# stateless-web-app-IaCL: AWS Infrastructure Deployment
-A terraform deployment to host a stateless containerized application 
+# stateless-web-app-IaCL: 
+A terraform AWS Infrastructure Deployment to host a stateless containerized application 
  
 ## Requirements
-- **Terraform**: Ensure Terraform is installed and configured.
+- **Terraform**: Ensure Terraform 1.11.3 is installed and configured.
 - **Service Account Credentials**:
   - Create an **IAM User** with programmatic access.
   - Generate and securely store **AWS Access Key ID** and **Secret Access Key**.
@@ -49,23 +49,23 @@ A terraform deployment to host a stateless containerized application
 	aws_secret_access_key = 
 
    ```
-3.1 **Initialize Terraform**:
+3 **Initialize Terraform**:
    ```sh
    terraform init
    ```
-3.2 **Update terraform.vartf with the *public_key_path* and eventually
+4 **Update terraform.vartf with the *public_key_path* and eventually
    ```sh
    terraform init
    ```
-4. **Plan the deployment**:
+5. **Plan the deployment**:
    ```sh
    terraform plan
    ```
-5. **Apply the deployment**:
+6. **Apply the deployment**:
    ```sh
    terraform apply -auto-approve
    ```
-6. **Access the Application**:
+7. **Access the Application**:
    - Retrieve the ALB DNS name using:
      ```sh
      terraform output alb_dns_name
