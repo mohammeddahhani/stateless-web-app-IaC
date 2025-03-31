@@ -2,24 +2,28 @@
 A terraform AWS Infrastructure Deployment to host a stateless containerized application 
  
 ## Requirements
-**Terraform**: Ensure Terraform 1.11.3 is installed and configured.
+**Terraform**: 
+
+- Ensure Terraform 1.11.3 is installed and configured.
 
 **Service Account Credentials**:
 
  - Create an IAM User with programmatic access.
- - Generate and securely store **AWS Access Key ID** and **Secret Access Key**.
- - set credentials under **./.aws/credentials**.
+ - Generate and securely store``AWS Access Key ID`` and ``Secret Access Key``
+ - set credentials under ``./.aws/credentials``.
 
 **Service Account Permissions**
 
  - The following AWS permissions are required for proper deployment:
-  - **AmazonEC2FullAccess** – Full control over EC2 instances, security groups, and networking.
-  - **AWSCertificateManagerFullAccess** – Required for managing SSL/TLS certificates in AWS ACM.
-  - **IAMFullAccess** – Allows managing IAM roles, policies, and permissions needed for infrastructure setup.
+  - ``AmazonEC2FullAccess``– Full control over EC2 instances, security groups, and networking.
+  - ``AWSCertificateManagerFullAccess`` – Required for managing SSL/TLS certificates in AWS ACM.
+  - ``IAMFullAccess`` – Allows managing IAM roles, policies, and permissions needed for infrastructure setup.
 
 ## Deployment Overview
 
 ![Architecture](images/architecture.png)
+
+Below the list of requirements and the measures taken to meet them: 
 
 ### 1. Load Balancer for High Availability
 - Application is deployed behind an **Application Load Balancer (ALB)**.
@@ -37,7 +41,7 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
 
 ### 5. Web Application Security
 - **HTTPS** enabled via AWS Certificate Manager (ACM).
-- **Web Application Firewall (WAF)** for added protection.
+- (TBC)**Web Application Firewall (WAF)** for added protection.
 
 ### 6. Network Segmentation
 - **VPC with public and private subnets**.
@@ -49,6 +53,7 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
    git clone <repository-url>
    cd <project-directory>
    ```
+
 2. **Configure AWS Credentials** under ./.aws/credentials*:
    ```sh
 	[default]
@@ -56,29 +61,33 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
 	aws_secret_access_key = 
 
    ```
+
 3 **Initialize Terraform**:
    ```sh
    terraform init
    ```
+
 4 **Update terraform.vartf with the *public_key_path* and eventually
    ```sh
    terraform init
    ```
+
 5. **Plan the deployment**:
    ```sh
    terraform plan
    ```
+
 6. **Apply the deployment**:
    ```sh
    terraform apply -auto-approve
    ```
+
 7. **Access the Application**:
    - Retrieve the ALB DNS name using:
      ```sh
      terraform output alb_dns_name
      ```
    - Open the DNS name in a browser to access the web app securely over HTTPS.
-
    - Access the jumpstation via SSH using the local SSH private key:
      ```sh
      ssh -i my-private-key ec2-user@<jumpstation address>
@@ -89,8 +98,8 @@ A terraform AWS Infrastructure Deployment to host a stateless containerized appl
      ```     
 
 ## Cleanup
-To destroy all deployed resources
-:```sh
+To destroy all deployed resources:
+```sh
 terraform destroy -auto-approve
 ```
 
