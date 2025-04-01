@@ -11,5 +11,6 @@ resource "aws_autoscaling_group" "ec2-cluster" {
   launch_template {
     id      = aws_launch_template.ec2.id
     version = "$Latest"
-  }  
+  } 
+ 
 }

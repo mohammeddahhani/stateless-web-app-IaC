@@ -8,7 +8,8 @@ resource "tls_self_signed_cert" "ssl_cert" {
   private_key_pem = tls_private_key.ssl_cert.private_key_pem
 
   subject {
-    common_name = "test.domain.lab"  # You can set this to your domain or public IP
+    common_name = "mohammed.dahhani"  # You can set this to your domain or public IP
+    organization = "Self-signed Certiticate"    
   }
 
   validity_period_hours = 8760 # 1 year validity

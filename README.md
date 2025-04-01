@@ -41,7 +41,7 @@ Below the list of requirements and the measures taken to meet them:
 
 ### 5. Web Application Security
 - **HTTPS** enabled via AWS Certificate Manager (ACM).
-- (TBC) **Web Application Firewall (WAF)** for added protection.
+- (TBC) **Web Application Firewall** for added protection.
 
 ### 6. Network Segmentation
 - **VPC with public and private subnets**.
@@ -54,7 +54,7 @@ Below the list of requirements and the measures taken to meet them:
    cd <project-directory>
    ```
 
-2. **Configure AWS Credentials** under ./.aws/credentials*:
+2. **Configure AWS Credentials** under ./.aws/credentials* (without quotes):
    ```sh
 	[default]
 	aws_access_key_id = 
@@ -88,14 +88,21 @@ Below the list of requirements and the measures taken to meet them:
      terraform output alb_dns_name
      ```
    - Open the DNS name in a browser to access the web app securely over HTTPS.
-   - Access the jumpstation via SSH using the local SSH private key:
+   - Retrieve the jumpstation public IP:
      ```sh
-     ssh -i my-private-key ec2-user@<jumpstation address>
-     ```
-   - Transfer the private key to the jump station to be able to SSH into the EC2 web instances:
+     terraform output jumpstation_public_ip
+     ```   
+
+   - Transfer the private key to the jump station to be able to SSH into the web cluster instances:
      ```sh
      scp -i my-private-key my-private-key ec2-user@<jumpstation address>:/root/.ssh/
-     ```     
+     ``` 
+
+   - Access the jumpstation via SSH using the local SSH private key, and from there the EC2 web instances
+     ```sh
+     ssh -i my-private-key ec2-user@<jumpstation public address>
+     ```
+   
 
 ## Cleanup
 To destroy all deployed resources:
