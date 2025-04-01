@@ -79,7 +79,7 @@ Below the list of requirements and the measures taken to meet them:
 
 
 
-3. **Update terraform.vartf
+3. **Update terraform.vartf**
 
 
 4. **Initialize Terraform**:
