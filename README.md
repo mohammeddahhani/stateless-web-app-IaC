@@ -94,7 +94,7 @@ Below the list of requirements and the measures taken to meet them:
      ```
    - Transfer the private key to the jump station to be able to SSH into the EC2 web instances:
      ```sh
-     scp -i my-private-key my-private-key ec2-user@<jumpstation address>:/root/.ssh
+     scp -i my-private-key my-private-key ec2-user@<jumpstation address>:/root/.ssh/
      ```     
 
 ## Cleanup
