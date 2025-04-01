@@ -118,4 +118,3 @@ To destroy all deployed resources:
 ```sh
 terraform destroy -auto-approve
 ```
-
