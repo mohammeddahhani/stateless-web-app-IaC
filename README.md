@@ -1,10 +1,10 @@
-# stateless-web-app-IaCL: 
-A terraform AWS Infrastructure Deployment to host a stateless containerized application 
+# stateless-web-app-IaC
+A terraform AWS infrastructure deployment to host a stateless containerized web application 
  
 ## Requirements
 **Terraform**: 
 
-- Ensure Terraform 1.11.3 is installed and configured.
+- Ensure Terraform ``1.11.3`` is installed and configured.
 
 **Service Account Credentials**:
 
@@ -41,7 +41,7 @@ Below the list of requirements and the measures taken to meet them:
 
 ### 5. Web Application Security
 - **HTTPS** enabled via AWS Certificate Manager (ACM).
-- (TBC)**Web Application Firewall (WAF)** for added protection.
+- (TBC) **Web Application Firewall (WAF)** for added protection.
 
 ### 6. Network Segmentation
 - **VPC with public and private subnets**.
