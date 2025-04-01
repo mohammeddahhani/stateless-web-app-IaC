@@ -30,6 +30,12 @@ Adapt if needed the following:
 
 ## Deployment Overview
 
+A EC2 autoscale group is configured to setup a HA web application using launch template to attach to two private subnets. These instances egress via NAT gateway and Internet gateway towards internet. A load balancer attached to the public subnets terminates ingress HTTPS and forwards HTTP requests to the web daemon runing on the EC2 instances.
+
+A dedicated EC2 jumpstation station is provisioned and attached to a public subnet. Leveraging multiple security groups the following restriction are inforced; inbound SSH traffic to EC2 autoscale group are allowed from the jumpstation, as well as HTTP traffic from the load balancer
+
+All subnets are part of the same VPC, but depoyed in multpile Availability Zones. 
+
 ![Architecture](images/architecture.png)
 
 Below the list of requirements and the measures taken to meet them: 
