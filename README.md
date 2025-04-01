@@ -19,10 +19,10 @@ A terraform AWS infrastructure deployment to host a stateless containerized web 
   - ``AWSCertificateManagerFullAccess`` – Required for managing SSL/TLS certificates in AWS ACM.
   - ``IAMFullAccess`` – Allows managing IAM roles, policies, and permissions needed for infrastructure setup.
 
-**Terrform.tf.vars**:
+**Deployment variables**:
 
-Adapt if needed the following:
- - ``public_key_path`` apath to the public SSH key file.
+Adapt the following within Terraform.tf.vars as needed :
+ - ``public_key_path`` path to the public SSH key file.
  - ``key_path`` apath to the private SSH key file.
  - ``aws_credentials`` path to aws credentials file
  - Public and private Subnets
