@@ -20,6 +20,7 @@ A terraform AWS infrastructure deployment to host a stateless containerized web 
   - ``IAMFullAccess`` – Allows managing IAM roles, policies, and permissions needed for infrastructure setup.
 
 **Terrform.tf.vars**:
+
 Adapt if needed the following:
  - ``public_key_path`` apath to the public SSH key file.
  - ``key_path`` apath to the private SSH key file.
@@ -70,12 +71,12 @@ Below the list of requirements and the measures taken to meet them:
 
    ```
 
-3. **Initialize Terraform**:
-   ```sh
-   terraform init
-   ```
 
-4. **Update terraform.vartf with the *public_key_path* and eventually
+
+3. **Update terraform.vartf
+
+
+4. **Initialize Terraform**:
    ```sh
    terraform init
    ```
